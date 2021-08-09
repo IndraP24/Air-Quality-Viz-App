@@ -20,4 +20,4 @@
 
 ## License
 
-Please see license.txt.
+Please see [license](https://github.com/IndraP24/Air-Quality-Viz-App/blob/main/license).
