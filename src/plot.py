@@ -1,12 +1,15 @@
 # Author:- Indrashis Paul | Email:- indrashis985@mail.com
 
+# %%
+import plotly.express as px
 import pandas as pd
 import folium
 from folium.plugins import HeatMap
 import streamlit as st
 from streamlit_folium import folium_static
 
-st.set_page_config(layout='wide')
+st.set_page_config(layout='centered', page_icon="😷",
+                   page_title="Air Quality-India")
 
 # -STEP 1 DOWNLOAD DATA
 # See details of API at:- https://aqicn.org/api/
@@ -20,7 +23,7 @@ trail_url = f"/map/bounds/?latlng={latlngbox}&token={tok}"
 my_data = pd.read_json(base_url + trail_url)  # Join parts of URL
 print('columns->', my_data.columns)  # 2 cols 'status' and 'data'
 
-
+# %%
 # -STEP 2: Create table like DataFrame
 all_rows = []
 for each_row in my_data['data']:
@@ -30,28 +33,29 @@ for each_row in my_data['data']:
                      each_row['aqi']])
 df = pd.DataFrame(all_rows,
                   columns=['station_name', 'lat', 'lon', 'aqi'])
+print(df.head())
 
-
+# %%
 # -STEP 3:- Clean the DataFrame
 df['aqi'] = pd.to_numeric(df.aqi,
                           errors='coerce')  # Invalid parsing to NaN
-print('with NaN ->', df.shape)  # Comes out as (152, 4)
+print('with NaN ->', df.shape)  # Comes out as (147, 4)
 # Remove NaN (Not a Number) entries in col
 df1 = df.dropna(subset=['aqi'])
-print('without NaN ->', df1.shape)  # (144, 4)
+print('without NaN ->', df1.shape)  # (139, 4)
 
-
-# -STEP 4: Make folium heat map
-init_loc = [23, 77]  # Approx over Bhopal
+# %%
+# -STEP 4: Make plotly heat map
+init_loc = dict(lat=23, lon=80)  # Approx over Bhopal
 max_aqi = int(df1['aqi'].max())
 print('max_aqi->', max_aqi)
-m = folium.Map(location=init_loc, zoom_start=5)
 df2 = df1[['lat', 'lon', 'aqi']]
-heat_aqi = HeatMap(df2, min_opacity=0.1, max_val=max_aqi,
-                   radius=20, blur=20, max_zoom=2)
-m.add_child(heat_aqi)
+fig = px.density_mapbox(df2, lat='lat', lon='lon', z='aqi', radius=20,
+                        center=init_loc, zoom=4,
+                        mapbox_style="open-street-map", width=1000, height=1000)
+fig.show()
 
-
+# %%
 # -STEP 5: Plot stations on map
 centre_point = [23.25, 77.41]  # Approx over Bhopal
 m2 = folium.Map(location=centre_point,
@@ -72,10 +76,7 @@ for idx, row in df1.iterrows():
                   popup=station,
                   icon=folium.Icon(color=pop_color)).add_to(m2)
 
-
+# %%
 # streamlit-folium
-#popup="Liberty Bell"
-
-
 st.title("Air Quality Marker Map")
 folium_static(m2)
