@@ -1,6 +1,7 @@
 # Author:- Indrashis Paul | Email:- indrashis985@mail.com
 
 # %%
+import plotly.graph_objects as go
 import plotly.express as px
 import pandas as pd
 import folium
@@ -52,8 +53,8 @@ print('max_aqi->', max_aqi)
 df2 = df1[['lat', 'lon', 'aqi']]
 fig = px.density_mapbox(df2, lat='lat', lon='lon', z='aqi', radius=20,
                         center=init_loc, zoom=4,
-                        mapbox_style="open-street-map", width=1000, height=1000)
-fig.show()
+                        mapbox_style="open-street-map", width=800, height=800)
+st.plotly_chart(fig)
 
 # %%
 # -STEP 5: Plot stations on map
@@ -76,6 +77,28 @@ for idx, row in df1.iterrows():
                   popup=station,
                   icon=folium.Icon(color=pop_color)).add_to(m2)
 
+
+site_lat = df1.lat
+site_lon = df1.lon
+locations_name = df1.station_name
+
+fig = go.Figure()
+
+fig.add_trace(go.Scattermapbox(
+    lat=site_lat,
+    lon=site_lon,
+    mode='markers',
+    marker=go.scattermapbox.Marker(
+        size=17,
+        color='rgb(255, 0, 0)',
+        opacity=0.7
+    ),
+    text=locations_name,
+    hoverinfo='text'
+))
+
+
+st.plotly_chart(fig)
 # %%
 # streamlit-folium
 st.title("Air Quality Marker Map")
