@@ -23,6 +23,7 @@ latlngbox = "8.0000,61.0000,37.0000,97.0000"  # For India
 trail_url = f"/map/bounds/?latlng={latlngbox}&token={tok}"
 my_data = pd.read_json(base_url + trail_url)  # Join parts of URL
 print('columns->', my_data.columns)  # 2 cols 'status' and 'data'
+print(my_data['data'].head())
 
 # %%
 # -STEP 2: Create table like DataFrame
@@ -31,9 +32,10 @@ for each_row in my_data['data']:
     all_rows.append([each_row['station']['name'],
                      each_row['lat'],
                      each_row['lon'],
-                     each_row['aqi']])
+                     each_row['aqi'],
+                     each_row['iaqi']['pm10']])
 df = pd.DataFrame(all_rows,
-                  columns=['station_name', 'lat', 'lon', 'aqi'])
+                  columns=['station_name', 'lat', 'lon', 'aqi', 'pm10'])
 print(df.head())
 
 # %%
