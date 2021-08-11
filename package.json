@@ -5,18 +5,23 @@
     "@amcharts/amcharts4": "^4.10.21",
     "@amcharts/amcharts4-fonts": "^4.0.1",
     "@amcharts/amcharts4-geodata": "^4.1.21",
+    "@tensorflow-models/face-landmarks-detection": "^0.0.3",
+    "@tensorflow/tfjs": "^3.8.0",
+    "@tensorflow/tfjs-backend-webgl": "^3.8.0",
+    "@tensorflow/tfjs-converter": "^3.8.0",
+    "@tensorflow/tfjs-core": "^3.8.0",
     "source-map-loader": "^3.0.0",
     "ts-loader": "^9.2.5"
   },
   "devDependencies": {
-    "@amcharts/amcharts4": "^4.0.0-beta.64",
-    "webpack": "^5.50.0",
-    "webpack-cli": "^4.7.2",
-    "source-map-loader": "0.2.3",
-    "babel-loader": "^8.0.5",
+    "@amcharts/amcharts4": "^4.10.21",
     "@babel/core": "^7.4.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.4.4",
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0"
+    "babel-loader": "^8.0.5",
+    "source-map-loader": "^3.0.0",
+    "webpack": "^5.50.0",
+    "webpack-cli": "^4.7.2"
   },
   "scripts": {
     "prepare": "webpack"
