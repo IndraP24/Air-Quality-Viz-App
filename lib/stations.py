@@ -32,7 +32,7 @@ for each_row in my_data['data']:
     all_rows.append([each_row['station']['name'],
                      each_row['lat'],
                      each_row['lon'],
-                     each_row['aqi'])
+                     each_row['aqi']])
 df = pd.DataFrame(all_rows,
                   columns=['station_name', 'lat', 'lon', 'aqi'])
 print(df.head())
