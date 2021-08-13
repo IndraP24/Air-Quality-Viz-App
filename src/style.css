@@ -2,8 +2,8 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-#chartdiv, #chartdiv2 {
-    width: 50%;
-    height: 400px;
-    float: left;
+#chartdiv {
+    width: 800px;
+    height: 800px;
+    margin: auto;
   }
