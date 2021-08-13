@@ -1,0 +1,10 @@
+name: tsa-38
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.8
+  - nb_conda_kernels
+  - pip
+  - pip:
+      - pip-tools
