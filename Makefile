@@ -12,6 +12,6 @@ pip-tools:
 	pip-compile requirements.in
 	pip-sync requirements.txt
 
-# Run streamlit file
+# Compile TS file to get the JS file
 run:
-	streamlit run app.py
+	npm install
