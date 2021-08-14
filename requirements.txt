@@ -65,8 +65,6 @@ entrypoints==0.3
     #   nbconvert
 ephem==4.0.0.2
     # via lunarcalendar
-fbprophet==0.7.1
-    # via -r requirements.in
 folium==0.12.1
     # via
     #   -r requirements.in
