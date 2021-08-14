@@ -59,7 +59,7 @@ decorator==5.0.9
     #   validators
 defusedxml==0.7.1
     # via nbconvert
-entrypoints==0.3
+entrypoints
     # via
     #   altair
     #   nbconvert
