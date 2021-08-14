@@ -4,7 +4,6 @@ streamlit
 pandas
 matplotlib
 seaborn
-fbprophet
 pandas
 folium
 streamlit_folium
