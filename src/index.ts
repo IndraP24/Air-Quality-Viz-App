@@ -34,3 +34,4 @@ hs.properties.fill = am4core.color("#367B25");
 // Create a chart container to hold the chart label
 let label = chart.chartContainer.createChild(am4core.Label);
 label.text = "indiaHigh";
+label.align = "center";
