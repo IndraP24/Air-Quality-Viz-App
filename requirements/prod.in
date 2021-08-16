@@ -1,0 +1,9 @@
+numpy==1.19.0
+pandas
+requests
+fastapi
+uvicorn
+python-dotenv
+aiofiles
+python-multipart
+jinja2
