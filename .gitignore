@@ -17,3 +17,7 @@ venv.bak/
 /air_pollution_forecasting
 /airvisual
 node_modules
+data/city_hour.csv
+data/station_day.csv
+data/station_hour.csv
+data/stations.csv
