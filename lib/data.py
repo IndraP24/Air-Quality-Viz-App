@@ -18,7 +18,7 @@ def load_data(dataset: str):
     src_path = os.getcwd()
 
     if os.path.exists(src_path):
-        dest_path = 'data/'
+        dest_path = '../data/'
         for f in os.listdir(dest_path):
             os.remove(os.path.join(dest_path, f))
 
@@ -28,6 +28,7 @@ def load_data(dataset: str):
                     src = src_path + '/' + file
                     dest = src_path + '/' + dest_path + file
                     shutil.move(src, dest)
+                    src = dest = ""
 
 
 load_data('rohanrao/air-quality-data-in-india')
