@@ -9,9 +9,9 @@ conda-update:
 # Compile and install exact pip packages
 pip-tools:
 	pip install pip-tools pystan==2.19.1.1
-	pip-compile requirements.in
-	pip-sync requirements.txt
+	pip-compile requirements/dev.in && pip-compile requirements/prod.in
+	pip install -r requirements/dev.txt && pip install -r requirements/prod.txt
 
-# Compile TS file to get the JS file
-run:
-	npm install
+# Download complete data
+load-data:
+	cd lib && python data.py
