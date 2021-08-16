@@ -1,4 +1,4 @@
-name: tsa-38
+name: airq-38
 channels:
   - defaults
   - conda-forge
