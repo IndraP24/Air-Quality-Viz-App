@@ -15,3 +15,7 @@ pip-tools:
 # Download complete data
 load-data:
 	cd lib && python data.py
+
+# Run FastAPI server
+run-app:
+	uvicorn api.app:app --reload --host 0.0.0.0 --port 8080
