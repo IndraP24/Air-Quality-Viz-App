@@ -10,7 +10,8 @@ conda-update:
 pip-tools:
 	pip install pip-tools pystan==2.19.1.1
 	pip-compile requirements/dev.in && pip-compile requirements/prod.in
-	pip install -r requirements/dev.txt && pip install -r requirements/prod.txt
+	pip-sync requirements/prod.txt requirements/dev.txt
+	conda install -c conda-forge nb_conda_kernels nbclient nbconvert nbformat notebook -y
 
 # Download complete data
 load-data:
