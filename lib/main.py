@@ -29,10 +29,10 @@ def predict_prophet(data: pd.DataFrame, periods: int):
     df_forecast['y'] = df_forecast['India_AQI']
     df_forecast = df_forecast[["ds", "y"]]
 
-    model = Prophet()
+    model = Prophet(seasonality_mode='multiplicative')
     model.fit(df_forecast)
 
-    future = model.make_future_dataframe(periods=periods)
+    future = model.make_future_dataframe(periods=periods, freq='MS')
 
     forecast = model.predict(future)
 
@@ -81,10 +81,11 @@ def predict_arima(data: pd.DataFrame, steps: int):
     test_data.plot(legend=True, ax=ax)
     plt.savefig(f"../artifacts/plots/arima_model_plot.png")
 
+    print(forecasts)
+
 
 df = preprocess("../data/city_day.csv")
-# train_prophet(df)
-#dic = predict_prophet("prophet_model", 365)
+# dic = predict_prophet(df, 36)
 # print(convert(dic))
 
 predict_arima(df, steps=36)
