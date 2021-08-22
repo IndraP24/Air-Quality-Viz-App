@@ -28,15 +28,24 @@ def predict_prophet(data: pd.DataFrame, periods: int):
     df_forecast['ds'] = df_forecast['Date']
     df_forecast['y'] = df_forecast['India_AQI']
     df_forecast = df_forecast[["ds", "y"]]
+    train_data = df_forecast[df_forecast['ds'] <= '2018-12']
+    test_data = df_forecast[df_forecast['ds'] >= '2018-12']
+    print(train_data)
+    print(test_data)
 
     model = Prophet(seasonality_mode='multiplicative')
-    model.fit(df_forecast)
+    model.fit(train_data)
 
     future = model.make_future_dataframe(periods=periods, freq='MS')
 
     forecast = model.predict(future)
 
-    model.plot(forecast).savefig(f"../artifacts/plots/prophet_model_plot.png")
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    model.plot(forecast, ax=ax)
+    # train_data.plot(legend=True, ax=ax)
+    # test_data.plot(legend=True, ax=ax)
+    plt.savefig(f"../artifacts/plots/prophet_model_plot.png")
     model.plot_components(forecast).savefig(
         f"../artifacts/plots/prophet_model_plot_components.png")
 
@@ -52,10 +61,11 @@ def convert(prediction_list):
 
 
 def predict_arima(data: pd.DataFrame, steps: int):
-    data.reset_index()
     # dividing into train and test:
     train_data = data['India_AQI'][:'2018-12']
-    test_data = data['India_AQI'][:'2019-12']
+    test_data = data['India_AQI']['2018-12':]
+    print(train_data)
+    print(test_data)
 
     # Building the model:
     model = SARIMAX(train_data, order=(0, 1, 2),
@@ -64,7 +74,7 @@ def predict_arima(data: pd.DataFrame, steps: int):
 
     fig, ax = plt.subplots(figsize=(10, 6))
 
-    # predict the next 12 months values to compare with the test dataset
+    # predict the next steps of months values to compare with the test dataset
     forecasts = results.get_forecast(steps=steps, dynamic=True)
 
     # find the confidence intervals
@@ -78,14 +88,17 @@ def predict_arima(data: pd.DataFrame, steps: int):
                      lower_limits, upper_limits, color='pink')
 
     # plotting the actual value from test data
+    train_data.plot(legend=True, ax=ax, )
     test_data.plot(legend=True, ax=ax)
+    ax.legend(['Forecasted Result', 'Training India_AQI', 'Testing India_AQI'])
     plt.savefig(f"../artifacts/plots/arima_model_plot.png")
 
     print(forecasts.predicted_mean)
 
 
 df = preprocess("../data/city_day.csv")
-# dic = predict_prophet(df, 36)
-# print(convert(dic))
 
-predict_arima(df, steps=36)
+dic = predict_prophet(df, 36)
+print(convert(dic))
+
+# predict_arima(df, steps=36)
