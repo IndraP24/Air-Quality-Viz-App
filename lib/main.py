@@ -81,7 +81,7 @@ def predict_arima(data: pd.DataFrame, steps: int):
     test_data.plot(legend=True, ax=ax)
     plt.savefig(f"../artifacts/plots/arima_model_plot.png")
 
-    print(forecasts)
+    print(forecasts.predicted_mean)
 
 
 df = preprocess("../data/city_day.csv")
