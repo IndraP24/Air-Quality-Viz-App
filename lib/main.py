@@ -30,8 +30,6 @@ def predict_prophet(data: pd.DataFrame, periods: int):
     df_forecast = df_forecast[["ds", "y"]]
     train_data = df_forecast[df_forecast['ds'] <= '2018-12']
     test_data = df_forecast[df_forecast['ds'] >= '2018-12']
-    print(train_data)
-    print(test_data)
 
     model = Prophet(seasonality_mode='multiplicative')
     model.fit(train_data)
@@ -42,21 +40,16 @@ def predict_prophet(data: pd.DataFrame, periods: int):
 
     fig, ax = plt.subplots(figsize=(10, 6))
 
-    model.plot(forecast, ax=ax)
-    # train_data.plot(legend=True, ax=ax)
-    # test_data.plot(legend=True, ax=ax)
-    plt.savefig(f"../artifacts/plots/prophet_model_plot.png")
+    model.plot(forecast, ax=ax).savefig(
+        f"artifacts/plots/prophet_model_plot.png")
     model.plot_components(forecast).savefig(
-        f"../artifacts/plots/prophet_model_plot_components.png")
+        f"artifacts/plots/prophet_model_plot_components.png")
 
-    return forecast.tail(periods).to_dict("records")
-
-
-def convert(prediction_list):
+    prediction_list = forecast.tail(periods).to_dict("records")
     output = {}
     for data in prediction_list:
         date = data['ds'].strftime("%d/%m/%Y")
-        output[date] = data['trend']
+        output[date] = data['yhat']
     return output
 
 
@@ -64,8 +57,6 @@ def predict_arima(data: pd.DataFrame, steps: int):
     # dividing into train and test:
     train_data = data['India_AQI'][:'2018-12']
     test_data = data['India_AQI']['2018-12':]
-    print(train_data)
-    print(test_data)
 
     # Building the model:
     model = SARIMAX(train_data, order=(0, 1, 2),
@@ -91,14 +82,18 @@ def predict_arima(data: pd.DataFrame, steps: int):
     train_data.plot(legend=True, ax=ax, )
     test_data.plot(legend=True, ax=ax)
     ax.legend(['Forecasted Result', 'Training India_AQI', 'Testing India_AQI'])
-    plt.savefig(f"../artifacts/plots/arima_model_plot.png")
+    plt.savefig(f"artifacts/plots/arima_model_plot.png")
 
-    print(forecasts.predicted_mean)
+    prediction_list = forecasts.predicted_mean.reset_index().to_dict("records")
+    output = {}
+    for data in prediction_list:
+        date = data['index'].strftime("%d/%m/%Y")
+        output[date] = data['predicted_mean']
+    return output
 
 
-df = preprocess("../data/city_day.csv")
+# df = preprocess("../data/city_day.csv")
 
-dic = predict_prophet(df, 36)
-print(convert(dic))
+# # print(predict_prophet(df, 36))
 
-# predict_arima(df, steps=36)
+# print(predict_arima(df, steps=36))
