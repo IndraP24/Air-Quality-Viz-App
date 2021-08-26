@@ -19,7 +19,7 @@ def pong():
     return {"ping": "pong"}
 
 
-@app.post("/predict")
+@app.post("/forecast")
 def forecast(input: Input):
     data_path = input.data_path
     df = preprocess(data_path)
