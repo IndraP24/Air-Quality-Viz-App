@@ -1,7 +1,9 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
-from lib.main import *
+from lib.sarima import *
+from lib.preprocess import *
+from lib.prophet import *
 
 app = FastAPI()
 
@@ -25,10 +27,10 @@ def forecast(input: Input):
     if input.model == "Prophet":
         prediction_list = predict_prophet(df, input.periods)
     elif input.model == "Arima":
-        prediction_list = predict_arima(df, input.periods)
+        prediction_list = predict_sarima(df, input.periods)
     else:
         raise HTTPException(
-            status_code=400, detail="No model provided as input!")
+            status_code=400, detail="Invalid model provided as input!")
 
     if not prediction_list:
         raise HTTPException(status_code=400, detail="Error in model!")
