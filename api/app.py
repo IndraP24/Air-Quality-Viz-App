@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
 from lib.sarima import *
@@ -38,3 +39,15 @@ def forecast(input: Input):
     response_object = {"data_path": input.data_path, "periods": input.periods,
                        "model": input.model, "forecasts": prediction_list}
     return response_object
+
+
+@app.get("/plots", response_class=FileResponse)
+async def main(plot: str):
+    if plot == 'Arima':
+        path = 'artifacts/plots/arima_model_plot.png'
+    elif plot == 'Prophet':
+        path = 'artifacts/plots/prophet_model_plot.png'
+    else:
+        raise HTTPException(
+            status_code=400, detail="Invalid plot chosen!")
+    return path
