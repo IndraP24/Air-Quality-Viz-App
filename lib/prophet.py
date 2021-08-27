@@ -24,12 +24,6 @@ def predict_prophet(data: pd.DataFrame, periods: int):
     forecast = model.predict(future)
 
     fig, ax = plt.subplots(figsize=(10, 6))
-    train_data = data['India_AQI'][:'2018-12']
-    test_data = data['India_AQI']['2018-12':]
-    print(train_data)
-    print(forecast)
-    train_data.plot(legend=True, ax=ax)
-    test_data.plot(legend=True, ax=ax)
 
     model.plot(forecast, ax=ax)
     plt.savefig(
