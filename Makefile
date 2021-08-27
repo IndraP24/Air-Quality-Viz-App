@@ -35,3 +35,8 @@ docker-stop:
 heroku-docker:
 	docker push registry.heroku.com/airq-forecast-app/web
 	heroku container:release -a airq-forecast-app web
+
+
+# Run streamlit app
+st-run:
+	streamlit run streamlit/app.py
