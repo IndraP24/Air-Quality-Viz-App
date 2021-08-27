@@ -16,7 +16,7 @@ venv.bak/
 .vscode
 /air_pollution_forecasting
 /airvisual
-node_modules
+/Using HTML-CSS-TS/node_modules
 data/city_hour.csv
 data/station_hour.csv
 data/stations.csv
