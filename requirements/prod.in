@@ -5,6 +5,7 @@ requests
 fastapi
 uvicorn
 gunicorn
+aiofiles
 matplotlib
 fbprophet
 statsmodels
