@@ -36,7 +36,7 @@ def predict_sarima(data: pd.DataFrame, steps: int):
     train_data.plot(legend=True, ax=ax)
     test_data.plot(legend=True, ax=ax)
     ax.legend(['Forecasted Result', 'Training India_AQI', 'Testing India_AQI'])
-    plt.savefig(f"artifacts/plots/arima_model_plot.png")
+    plt.savefig(f"../artifacts/plots/arima_model_plot.png")
 
     prediction_list = forecasts.predicted_mean.reset_index().to_dict("records")
     output = {}
@@ -45,5 +45,7 @@ def predict_sarima(data: pd.DataFrame, steps: int):
         output[date] = data['predicted_mean']
     return output
 
+
+# from preprocess import preprocess
 # df = preprocess("../data/city_day.csv")
-# print(predict_arima(df, steps=36))
+# print(predict_sarima(df, steps=36))
