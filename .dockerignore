@@ -1,0 +1,18 @@
+/notebooks
+/requirements
+/streamlit
+/Using HTML-CSS-TS
+/Air-Quality-Viz-Streamlit
+
+data/city_hour.csv
+data/station_hour.csv
+data/stations.csv
+
+__pycache__/
+
+.ipynb_checkpoints
+.gitignore
+environment.yml
+LICENSE
+Makefile
+README.md
