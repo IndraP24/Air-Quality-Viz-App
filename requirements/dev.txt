@@ -12,17 +12,10 @@ certifi==2021.5.30
     #   requests
 charset-normalizer==2.0.4
     # via requests
-cmdstanpy==0.9.5
-    # via fbprophet
-convertdate==2.3.2
-    # via
-    #   fbprophet
-    #   holidays
 cycler==0.10.0
     # via matplotlib
 cython==0.29.24
     # via
-    #   fbprophet
     #   pmdarima
     #   pystan
 debugpy==1.4.1
@@ -31,14 +24,6 @@ decorator==5.0.9
     # via ipython
 entrypoints==0.3
     # via jupyter-client
-ephem==4.0.0.2
-    # via lunarcalendar
-fbprophet==0.7.1
-    # via -r requirements/dev.in
-hijri-converter==2.2.0
-    # via holidays
-holidays==0.11.2
-    # via fbprophet
 idna==3.2
     # via requests
 ipykernel==6.2.0
@@ -61,14 +46,8 @@ kaggle==1.5.12
     # via -r requirements/dev.in
 kiwisolver==1.3.1
     # via matplotlib
-korean-lunar-calendar==0.2.1
-    # via holidays
-lunarcalendar==0.0.9
-    # via fbprophet
 matplotlib==3.4.3
     # via
-    #   -r requirements/dev.in
-    #   fbprophet
     #   missingno
     #   seaborn
 matplotlib-inline==0.1.2
@@ -81,8 +60,7 @@ nest-asyncio==1.5.1
     # via jupyter-client
 numpy==1.19.0
     # via
-    #   cmdstanpy
-    #   fbprophet
+    #   -r requirements/dev.in
     #   matplotlib
     #   missingno
     #   pandas
@@ -95,8 +73,6 @@ numpy==1.19.0
     #   statsmodels
 pandas==1.3.2
     # via
-    #   cmdstanpy
-    #   fbprophet
     #   pmdarima
     #   seaborn
     #   statsmodels
@@ -110,40 +86,30 @@ pickleshare==0.7.5
     # via ipython
 pillow==8.3.1
     # via matplotlib
-plotly==5.2.1
+plotly==5.2.2
     # via -r requirements/dev.in
 pmdarima==1.8.2
     # via -r requirements/dev.in
-prompt-toolkit==3.0.19
+prompt-toolkit==3.0.20
     # via ipython
 ptyprocess==0.7.0
     # via pexpect
 pygments==2.10.0
     # via ipython
-pymeeus==0.5.11
-    # via convertdate
 pyparsing==2.4.7
     # via matplotlib
 pystan==2.19.1.1
-    # via
-    #   -r requirements/dev.in
-    #   fbprophet
+    # via -r requirements/dev.in
 python-dateutil==2.8.2
     # via
-    #   fbprophet
-    #   holidays
     #   jupyter-client
     #   kaggle
-    #   lunarcalendar
     #   matplotlib
     #   pandas
 python-slugify==5.0.2
     # via kaggle
 pytz==2021.1
-    # via
-    #   convertdate
-    #   lunarcalendar
-    #   pandas
+    # via pandas
 pyzmq==22.2.1
     # via jupyter-client
 requests==2.26.0
@@ -160,15 +126,10 @@ scipy==1.7.1
     #   seaborn
     #   statsmodels
 seaborn==0.11.2
-    # via
-    #   -r requirements/dev.in
-    #   missingno
-setuptools-git==1.2
-    # via fbprophet
+    # via missingno
 six==1.16.0
     # via
     #   cycler
-    #   holidays
     #   kaggle
     #   patsy
     #   plotly
@@ -176,9 +137,7 @@ six==1.16.0
 sklearn==0.0
     # via -r requirements/dev.in
 statsmodels==0.12.2
-    # via
-    #   -r requirements/dev.in
-    #   pmdarima
+    # via pmdarima
 tenacity==8.0.1
     # via plotly
 text-unidecode==1.3
@@ -189,10 +148,8 @@ tornado==6.1
     # via
     #   ipykernel
     #   jupyter-client
-tqdm==4.62.1
-    # via
-    #   fbprophet
-    #   kaggle
+tqdm==4.62.2
+    # via kaggle
 traitlets==5.0.5
     # via
     #   ipykernel
