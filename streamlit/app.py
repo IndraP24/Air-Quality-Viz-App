@@ -59,7 +59,8 @@ st.write("#### ❗Note: Only the **Date** and the **AQI** column will be used fr
 st.markdown("<h3 style='text-align: left; color: green;'>Step 2: Select the Model for Training and the Forecast Horizon</h3>",
             unsafe_allow_html=True)
 model_names = ['FB Prophet', 'statsmodels sARIMA']
-model = st.radio("Time Series Models", model_names)
+st.write("Which Time Series Model would you like to choose?")
+model = st.radio("", model_names)
 
 if model == 'FB Prophet':
     model_in = "Prophet"
@@ -73,6 +74,10 @@ periods_input = st.number_input('', min_value=1, max_value=500)
 st.write("**The chosen model is: **", model)
 st.write("**The forecasting period is: **", periods_input)
 """---"""
+
+
+st.markdown("<h3 style='text-align: left; color: green;'>Step 3: Train the model and Visualize results</h3>",
+            unsafe_allow_html=True)
 
 
 st.markdown("<h1 style='text-align: center; color: darkblue;'>Air Quality Marker Map</h1>",
