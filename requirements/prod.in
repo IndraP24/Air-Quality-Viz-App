@@ -4,9 +4,7 @@ pandas
 requests
 fastapi
 uvicorn
+gunicorn
 matplotlib
-streamlit
-folium
-streamlit_folium
 fbprophet
 statsmodels
