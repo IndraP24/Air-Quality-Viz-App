@@ -15,9 +15,7 @@ charset-normalizer==2.0.4
 cycler==0.10.0
     # via matplotlib
 cython==0.29.24
-    # via
-    #   pmdarima
-    #   pystan
+    # via pmdarima
 debugpy==1.4.1
     # via ipykernel
 decorator==5.0.9
@@ -66,7 +64,6 @@ numpy==1.19.0
     #   pandas
     #   patsy
     #   pmdarima
-    #   pystan
     #   scikit-learn
     #   scipy
     #   seaborn
@@ -98,8 +95,6 @@ pygments==2.10.0
     # via ipython
 pyparsing==2.4.7
     # via matplotlib
-pystan==2.19.1.1
-    # via -r requirements/dev.in
 python-dateutil==2.8.2
     # via
     #   jupyter-client
