@@ -5,7 +5,7 @@
 #    pip-compile requirements/prod.in
 #
 aiofiles==0.7.0
-    # via -r requirements/prod.in
+    # via -r prod.in
 asgiref==3.4.1
     # via uvicorn
 certifi==2021.5.30
@@ -29,11 +29,11 @@ cython==0.29.24
 ephem==4.0.0.2
     # via lunarcalendar
 fastapi==0.68.1
-    # via -r requirements/prod.in
+    # via -r prod.in
 fbprophet==0.7.1
-    # via -r requirements/prod.in
+    # via -r prod.in
 gunicorn==20.1.0
-    # via -r requirements/prod.in
+    # via -r prod.in
 h11==0.12.0
     # via uvicorn
 hijri-converter==2.2.0
@@ -50,11 +50,11 @@ lunarcalendar==0.0.9
     # via fbprophet
 matplotlib==3.4.3
     # via
-    #   -r requirements/prod.in
+    #   -r prod.in
     #   fbprophet
 numpy==1.19.0
     # via
-    #   -r requirements/prod.in
+    #   -r prod.in
     #   cmdstanpy
     #   fbprophet
     #   matplotlib
@@ -65,13 +65,13 @@ numpy==1.19.0
     #   statsmodels
 pandas==1.3.2
     # via
-    #   -r requirements/prod.in
+    #   -r prod.in
     #   cmdstanpy
     #   fbprophet
     #   statsmodels
 patsy==0.5.1
     # via statsmodels
-pillow==8.3.1
+pillow==8.3.2
     # via matplotlib
 pydantic==1.8.2
     # via fastapi
@@ -81,7 +81,7 @@ pyparsing==2.4.7
     # via matplotlib
 pystan==2.19.1.1
     # via
-    #   -r requirements/prod.in
+    #   -r prod.in
     #   fbprophet
 python-dateutil==2.8.2
     # via
@@ -96,7 +96,7 @@ pytz==2021.1
     #   lunarcalendar
     #   pandas
 requests==2.26.0
-    # via -r requirements/prod.in
+    # via -r prod.in
 scipy==1.7.1
     # via statsmodels
 setuptools-git==1.2
@@ -110,7 +110,7 @@ six==1.16.0
 starlette==0.14.2
     # via fastapi
 statsmodels==0.12.2
-    # via -r requirements/prod.in
+    # via -r prod.in
 tqdm==4.62.2
     # via fbprophet
 typing-extensions==3.10.0.0
@@ -118,7 +118,7 @@ typing-extensions==3.10.0.0
 urllib3==1.26.6
     # via requests
 uvicorn==0.15.0
-    # via -r requirements/prod.in
+    # via -r prod.in
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
