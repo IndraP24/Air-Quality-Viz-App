@@ -8,7 +8,6 @@ from lib.prophet import *
 
 app = FastAPI()
 
-
 class Input(BaseModel):
     data_path: str
     periods: int
